@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+
+@theme{
+    --color-gradient : var(--gradient)
+}
+
+@layer base{
+    :root{
+        --gradient : #222222;
+    }
+    .dark{
+        --gradient : #ffffff;
+    }
+}
