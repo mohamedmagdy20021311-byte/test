@@ -7,7 +7,8 @@
 //  console.log(temp)
 //  console.log(result)
 
-import { useEffect, useState } from "react"
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 //   return(
 //     <div>
@@ -21,38 +22,29 @@ import { useEffect, useState } from "react"
 
 // export default App
 
-
-
-function App(){
-  const [productsData,setProductData] = useState([])
-  useEffect(()=>{
-    async function fetchData(){
-      const response = await fetch('https://fakestoreapi.com/products')
-      const data =await response.json()
-      setProductData(data) 
+function App() {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    async function fetchProducts() {
+      const response = await axios.get(
+        "https://dummyjson.com/products/categories"
+      );
+      setProducts(response.data);
+      return response.data;
     }
-    fetchData()
-  },[])
-
-  console.log(productsData)
+    fetchProducts();
+  }, []);
+  console.log(products);
   return (
-    <div className=" flex flex-col items-center gap-5 ">
-      <button onClick={()=>document.documentElement.classList.toggle("dark")}>change mood</button>
-      {productsData.map((product)=>{
-        return(
-          <div key={product.id} className=" w-80 my-5 border text-justify bg-gradient ">
-            <img src={product.image} className=" w-full h-40 p-2"/>
-            <p>{product.title}</p>
-            <p>{product.price}</p>
-            <p>{product.description}</p>
-
+    <div>
+      {products.map((product) => {
+        return (
+          <div className=" size-60">
+            <img src={product.images} alt="" />
           </div>
-        )
+        );
       })}
-
-
     </div>
-  )
+  );
 }
-
-export default App
+export default App;
