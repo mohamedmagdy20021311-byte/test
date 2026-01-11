@@ -41,6 +41,7 @@ function App() {
         return (
           <div className=" size-60">
           <div>mohamed magdy</div>
+            <p>frontend developer</p>
             <img src={product.images} alt="" />
           </div>
         );
