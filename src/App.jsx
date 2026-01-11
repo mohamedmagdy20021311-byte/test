@@ -38,6 +38,7 @@ function App() {
   return (
     <div>
       {products.map((product) => {
+      <p>modidadaid</p>
         return (
           <div className=" size-60">
             <img src={product.images} alt="" />
